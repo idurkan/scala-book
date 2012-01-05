@@ -13,6 +13,14 @@ import static junit.framework.Assert.assertFalse;
  * To change this template use File | Settings | File Templates.
  */
 public class RationalTest {
+
+    @Test
+    public void testNormalization() {
+        Rational r1 = new Rational(10, 8);
+
+        assertEquals(new Rational(5, 4), r1);
+    }
+
     @Test
     public void testEquals() {
         Rational r1 = new Rational(1, 2);
@@ -40,7 +48,17 @@ public class RationalTest {
 
         Rational result = r1.add(r2);
 
+        // this test passes since 10/8 is normalized just like result is normalized.
         assertEquals(new Rational(10, 8), result);
+    }
+
+    @Test public void testMultiple() {
+        Rational r1 = new Rational(5, 3);
+        Rational r2 = new Rational(2, 7);
+        Rational r3 = new Rational(3, 10);
+
+        assertEquals(new Rational(10, 21), r1.multiply(r2));
+        assertEquals(new Rational(1, 2), r1.multiply(r3));
     }
 
     @Test
